@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.smarteryo.computerone.ui.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.smarteryo.computerone.ui.menu.MenuFragment"
+        android:label="MenuFragment"
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_menuFragment_to_secondaryMenuFragment"
+            app:destination="@id/secondaryMenuFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_mainTwoFragment"
+            app:destination="@id/mainTwoFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_optionFragment"
+            app:destination="@id/optionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/optionFragment"
+        android:name="com.smarteryo.computerone.ui.option.OptionFragment"
+        android:label="OptionFragment"
+        tools:layout="@layout/fragment_option" />
+    <fragment
+        android:id="@+id/mainTwoFragment"
+        android:name="com.smarteryo.computerone.ui.main_two.MainTwoFragment"
+        android:label="MainTwoFragment"
+        tools:layout="@layout/fragment_main_two">
+        <action
+            android:id="@+id/action_mainTwoFragment_to_pauseDialogFragment"
+            app:destination="@id/pauseDialogFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/pauseDialogFragment"
+        android:name="com.smarteryo.computerone.ui.pause.PauseDialogFragment"
+        android:label="PauseDialogFragment"
+        tools:layout="@layout/dialog_pause">
+        <action
+            android:id="@+id/action_pauseDialogFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/secondaryMenuFragment"
+        android:name="com.smarteryo.computerone.ui.secondary_menu.SecondaryMenuFragment"
+        android:label="SecondaryMenuFragment"
+        tools:layout="@layout/fragment_secondary_menu">
+
+        <action
+            android:id="@+id/action_secondaryMenuFragment_to_mainTwoFragment"
+            app:destination="@id/mainTwoFragment" />
+    </fragment>
+</navigation>

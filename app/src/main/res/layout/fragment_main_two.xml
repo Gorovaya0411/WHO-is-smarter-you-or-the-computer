@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="score"
+            type="String" />
+
+        <variable
+            name="equation"
+            type="String" />
+
+        <variable
+            name="timerOver"
+            type="Integer" />
+
+        <variable
+            name="timer"
+            type="String" />
+
+        <variable
+            name="mainTwoOnKeyListenerBinding"
+            type="android.view.View.OnKeyListener" />
+
+        <variable
+            name="mainTwoViewModelBinding"
+            type="com.smarteryo.computerone.ui.main_two.MainTwoViewModel" />
+
+        <variable
+            name="mainTwoActionsListener"
+            type="com.smarteryo.computerone.ui.main_two.MainTwoActionsListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_main_two_score" />
+
+            <TextView
+                android:id="@+id/main_two_score_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/font"
+                android:text="@{score}"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="52685" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/main_two_refresh_img_btn"
+            listener="@{() -> mainTwoActionsListener.mainTwoRefresh()}"
+            soundEnabled="@{mainTwoViewModelBinding.sound}"
+            vibrationEnabled="@{mainTwoViewModelBinding.vibration}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:background="@drawable/ic_main_two_refresh"
+            android:onClick="@{() -> mainTwoActionsListener.mainTwoRefresh()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/main_two_field_enter_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_two_field_timer_img"
+                app:srcCompat="@drawable/ic_main_two_field_enter" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/main_two_field_task_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_main_two_field_task" />
+
+            <TextView
+                android:id="@+id/main_two_task_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font"
+                android:text="@{equation}"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                app:layout_constraintBottom_toBottomOf="@+id/main_two_field_task_img"
+                app:layout_constraintEnd_toEndOf="@+id/main_two_field_task_img"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/main_two_field_task_img"
+                tools:text="678+756" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/main_two_answer_player_et"
+                onKeyListener="@{mainTwoOnKeyListenerBinding}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font"
+                android:gravity="center_horizontal|center_vertical"
+                android:inputType="number"
+                android:maxLength="4"
+                android:onTextChanged="@{(text, start, before, count) -> mainTwoViewModelBinding.onUsernameTextChanged(text)}"
+                android:paddingTop="24dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/main_two_field_enter_img"
+                app:layout_constraintEnd_toEndOf="@+id/main_two_field_enter_img"
+                app:layout_constraintStart_toStartOf="@+id/main_two_field_enter_img" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/main_two_field_timer_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_two_field_task_img"
+                app:srcCompat="@drawable/ic_main_two_field_timer" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/main_two_timer_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font"
+                android:text="@{timer}"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="@+id/main_two_field_timer_img"
+                app:layout_constraintEnd_toEndOf="@+id/main_two_field_timer_img"
+                app:layout_constraintStart_toStartOf="@+id/main_two_field_timer_img"
+                app:layout_constraintTop_toTopOf="@+id/main_two_field_timer_img"
+                tools:text="00:00" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/main_two_pause_img_btn"
+            listener="@{() -> mainTwoActionsListener.mainTwoPause()}"
+            soundEnabled="@{mainTwoViewModelBinding.sound}"
+            vibrationEnabled="@{mainTwoViewModelBinding.vibration}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:background="@drawable/ic_main_two_pause"
+            android:onClick="@{() -> mainTwoActionsListener.mainTwoPause()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/main_two_time_is_over_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_main_two_time_is_over"
+            android:visibility="@{timerOver}"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

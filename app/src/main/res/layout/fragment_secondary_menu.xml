@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="secondaryMenuViewModelBinding"
+            type="com.smarteryo.computerone.ui.secondary_menu.SecondaryMenuViewModel" />
+
+        <variable
+            name="secondaryMenuActionsListener"
+            type="com.smarteryo.computerone.ui.secondary_menu.SecondaryMenuActionsListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/secondary_menu_back_img_btn"
+            listener="@{() -> secondaryMenuActionsListener.secondaryMenuBack()}"
+            soundEnabled="@{secondaryMenuViewModelBinding.sound}"
+            vibrationEnabled="@{secondaryMenuViewModelBinding.vibration}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:background="@drawable/ic_main_back"
+            android:onClick="@{() -> secondaryMenuActionsListener.secondaryMenuBack()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@drawable/ic_secondary_menu_time" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/secondary_menu_one"
+                listener="@{() -> secondaryMenuActionsListener.secondaryMenuOneMin()}"
+                soundEnabled="@{secondaryMenuViewModelBinding.sound}"
+                vibrationEnabled="@{secondaryMenuViewModelBinding.vibration}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/ic_secondary_menu_one"
+                android:onClick="@{() -> secondaryMenuActionsListener.secondaryMenuOneMin()}" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/secondary_menu_two"
+                listener="@{() -> secondaryMenuActionsListener.secondaryMenuTwoMin()}"
+                soundEnabled="@{secondaryMenuViewModelBinding.sound}"
+                vibrationEnabled="@{secondaryMenuViewModelBinding.vibration}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/ic_secondary_menu_two"
+                android:onClick="@{() -> secondaryMenuActionsListener.secondaryMenuTwoMin()}" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/secondary_menu_three"
+                listener="@{() -> secondaryMenuActionsListener.secondaryMenuThreeMin()}"
+                soundEnabled="@{secondaryMenuViewModelBinding.sound}"
+                vibrationEnabled="@{secondaryMenuViewModelBinding.vibration}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/ic_secondary_menu_three"
+                android:onClick="@{() -> secondaryMenuActionsListener.secondaryMenuThreeMin()}" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/secondary_menu_continue"
+                listener="@{() -> secondaryMenuActionsListener.secondaryMenuContinue()}"
+                soundEnabled="@{secondaryMenuViewModelBinding.sound}"
+                vibrationEnabled="@{secondaryMenuViewModelBinding.vibration}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/ic_secondary_menu_continue"
+                android:onClick="@{() -> secondaryMenuActionsListener.secondaryMenuContinue()}" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

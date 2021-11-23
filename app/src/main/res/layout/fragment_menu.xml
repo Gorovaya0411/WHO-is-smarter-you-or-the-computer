@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="menuMainViewModelBinding"
+            type="com.smarteryo.computerone.ui.menu.MenuViewModel" />
+
+        <variable
+            name="menuMainActionsListener"
+            type="com.smarteryo.computerone.ui.menu.MenuMainActionsListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_menu_who_is_smarter_you_or_the_computer" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/menu_play_img_btn"
+                listener="@{() -> menuMainActionsListener.menuMainTwo()}"
+                soundEnabled="@{menuMainViewModelBinding.sound}"
+                vibrationEnabled="@{menuMainViewModelBinding.vibration}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/bg_menu_play"
+                android:onClick="@{() -> menuMainActionsListener.menuMainTwo()}" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/menu_keep_on_img_btn"
+                listener="@{() -> menuMainActionsListener.menuToKeepOn()}"
+                soundEnabled="@{menuMainViewModelBinding.sound}"
+                vibrationEnabled="@{menuMainViewModelBinding.vibration}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/bg_menu_keep_on"
+                android:onClick="@{() -> menuMainActionsListener.menuToKeepOn()}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_menu_best_score" />
+
+            <TextView
+                android:id="@+id/menu_best_score_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/font"
+                android:text="@{String.valueOf(menuMainViewModelBinding.bestScore)}"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/menu_setting_img_btn"
+            listener="@{() -> menuMainActionsListener.menuMainToSettings()}"
+            soundEnabled="@{menuMainViewModelBinding.sound}"
+            vibrationEnabled="@{menuMainViewModelBinding.vibration}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="32dp"
+            android:background="@drawable/ic_menu_setting"
+            android:onClick="@{() -> menuMainActionsListener.menuMainToSettings()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
